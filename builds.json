@@ -1,3 +1,14 @@
+# Structure
+# {
+#   enable: Enable build setting. Otherwise, this build is skipped.
+#   os: OS to build for
+#   architecture: The architecture to build for
+#   debug: Build in debug if true, otherwise release 
+#   exact: Build with exact fractional solve enabled if true, otherwise it is disabled
+#   runs_on: The GitHub runner to perform the build
+#   image: The Docker image used to perform the build. If null, the build is directly performed on the OS
+#   shell: The shell to use
+# }
 [
     {
         "enable": true,
