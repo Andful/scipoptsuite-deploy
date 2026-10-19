@@ -123,6 +123,7 @@ jobs:
                   echo "Matrix output: ${{needs.configure.outputs.matrix}}"
 
     build:
+        name: "Build ${{matrix.os}}-${{matrix.architecture}}.zip"
         needs: configure
         strategy:
             matrix: 
