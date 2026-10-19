@@ -1,6 +1,6 @@
 [
     {
-        "enable": false,
+        "enable": true,
         "os": "windows",
         "architecture": "x86_64",
         "debug": false,
@@ -10,7 +10,7 @@
         "shell": "msys2 {0}"
     },
     {
-        "enable": true,
+        "enable": false,
         "os": "linux",
         "architecture": "x86_64",
         "debug": false,

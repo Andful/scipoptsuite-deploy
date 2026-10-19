@@ -127,8 +127,7 @@ jobs:
         strategy:
             matrix: 
                 include: ${{ fromJson(needs.configure.outputs.matrix) }}
-                #exclude:
-                #    - enable: false
+                exclude: [{ enable: false }]
         runs-on: ${{ matrix.runs_on }}
         container:
             image: ${{ matrix.image }}
