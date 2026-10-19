@@ -10,13 +10,43 @@
         "shell": "msys2 {0}"
     },
     {
-        "enable": false,
+        "enable": true,
         "os": "linux",
         "architecture": "x86_64",
         "debug": false,
         "exact": false,
         "runs_on": "ubuntu-latest",
         "image": "quay.io/pypa/manylinux_2_28_x86_64",
+        "shell": "bash"
+    },
+    {
+        "enable": true,
+        "os": "linux",
+        "architecture": "arm",
+        "debug": false,
+        "exact": false,
+        "runs_on": "ubuntu-24.04-arm",
+        "image": "quay.io/pypa/manylinux_2_28_aarch64",
+        "shell": "bash"
+    },
+    {
+        "enable": true,
+        "os": "macos",
+        "architecture": "x86_64",
+        "debug": false,
+        "exact": false,
+        "runs_on": "macos-15-intel",
+        "image": null,
+        "shell": "bash"
+    },
+    {
+        "enable": true,
+        "os": "macos",
+        "architecture": "arm",
+        "debug": false,
+        "exact": false,
+        "runs_on": "macos-14",
+        "image": null,
         "shell": "bash"
     }
 ]
