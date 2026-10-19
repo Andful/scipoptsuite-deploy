@@ -109,6 +109,13 @@ jobs:
             - name: Set matrix data
               id: set-matrix
               run: echo "matrix=$(jq -c . < ./builds.json)" >> $GITHUB_OUTPUT
+    
+    print-matrix:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Print matrix
+              run: |
+                  echo "Matrix output: ${{needs.configure.outputs.matrix}}"
 
     build:
         strategy:
