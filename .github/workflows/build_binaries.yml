@@ -109,6 +109,7 @@ jobs:
             - name: Set matrix data
               id: set-matrix
               run: |
+                    echo "test=hello" >> "$GITHUB_OUTPUT"
                     echo "matrix=$(jq -c . ./builds.json)"
                     echo "matrix=$(jq -c . ./builds.json)" >> $GITHUB_OUTPUT
     
@@ -117,6 +118,7 @@ jobs:
         steps:
             - name: Print matrix
               run: |
+                  echo "Matrix output: ${{needs.configure.outputs.test}}"
                   echo "Matrix output: ${{needs.configure.outputs.matrix}}"
 
     build:
