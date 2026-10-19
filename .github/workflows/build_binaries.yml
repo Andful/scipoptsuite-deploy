@@ -140,7 +140,7 @@ jobs:
                   msystem: ucrt64
               if: matrix.os == 'windows'
             - name: Build and install SCIP
-              if: matrix.enabled == 'true'
+              if: matrix.enabled == true
               run: |
                   export SCIP_VERSION=$(echo "${{github.event.inputs.scip_version}}" | tr -d '.')
                   export SCIP_VERSION_FULL="${{ github.event.inputs.scip_version }}"
