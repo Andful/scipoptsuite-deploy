@@ -1,0 +1,11 @@
+[
+    {
+        "os": "windows",
+        "architecture": "x86_64",
+        "debug": false,
+        "exact": false,
+        "runs-on": "windows-latest",
+        "image": null,
+        "shell": "msys2 {0}"
+    }
+]

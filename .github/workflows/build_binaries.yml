@@ -99,30 +99,32 @@ jobs:
                   echo "Static?: ${{github.event.inputs.static}}"
                   echo "Use cached dependncies?: ${{github.event.inputs.use_cached_dependencies}}"
 
+    configure:
+        runs-on: ubuntu-latest
+        outputs:
+            matrix: ${{ steps.set-matrix.outputs.matrix }}
+        steps:
+            - name: Checkout to repository
+              uses: actions/checkout@v3
+            - name: Set matrix data
+              id: set-matrix
+              run: echo "matrix=$(jq -c . < ./builds.json)" >> $GITHUB_OUTPUT
+
     build:
         strategy:
-            matrix:
-                os: ["windows"]
-                architecture: ["x86_64", "arm"]
-                gmp: [true]
-                exclude:
-                    - os: windows
-                      architecture: arm
+            matrix: ${{ fromJson(needs.configure.outputs.matrix) }}
 
-        runs-on: |
-            ${{ fromJson('{ "macos": { "arm": "macos-14", "x86_64": "macos-15-intel" }, "linux": { "arm": "ubuntu-24.04-arm", "x86_64": "ubuntu-latest" }, "windows": { "x86_64": "windows-latest" } }')[matrix.os][matrix.architecture] }}
+        runs-on: ${{ matrix["runs-on"] }}
         container:
-            image: |
-                ${{ fromJson('{ "macos": { "arm": null, "x86_64": null }, "linux": { "arm": "quay.io/pypa/manylinux_2_28_aarch64", "x86_64": "quay.io/pypa/manylinux_2_28_x86_64" }, "windows": { "x86_64": null } }')[matrix.os][matrix.architecture] }}
+            image: ${{ matrix["image"] }}
         defaults:
             run:
-                shell: |
-                    ${{ fromJson('{ "macos": "bash", "linux": "bash", "windows": "msys2 {0}" }')[matrix.os] }}
+                shell: ${{ matrix["shell"] }}
         steps:
             - uses: actions/checkout@v4
             - uses: msys2/setup-msys2@v2
               with:
-                msystem: ucrt64
+                  msystem: ucrt64
               if: matrix.os == 'windows'
             - name: Build and install SCIP
               run: |
