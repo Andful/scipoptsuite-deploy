@@ -119,7 +119,7 @@ jobs:
         steps:
             - name: Print matrix
               run: |
-                  echo "Test output: ${{fromJson(needs.configure.outputs.matrix)[0].image}}"
+                  echo "Test output: ${{fromJson(needs.configure.outputs.matrix)}}"
                   echo "Matrix output: ${{needs.configure.outputs.matrix}}"
 
     build:
