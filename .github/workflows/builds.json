@@ -4,7 +4,7 @@
         "architecture": "x86_64",
         "debug": false,
         "exact": false,
-        "runs-on": "windows-latest",
+        "runs_on": "windows-latest",
         "image": null,
         "shell": "msys2 {0}"
     }

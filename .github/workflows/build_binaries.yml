@@ -114,12 +114,12 @@ jobs:
         strategy:
             matrix: ${{ fromJson(needs.configure.outputs.matrix) }}
 
-        runs-on: ${{ matrix["runs-on"] }}
+        runs-on: ${{ matrix.runs_on }}
         container:
-            image: ${{ matrix["image"] }}
+            image: ${{ matrix.image }}
         defaults:
             run:
-                shell: ${{ matrix["shell"] }}
+                shell: ${{ matrix.shell }}
         steps:
             - uses: actions/checkout@v4
             - uses: msys2/setup-msys2@v2
