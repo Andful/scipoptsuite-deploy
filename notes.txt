@@ -1,0 +1,1 @@
+from https://github.com/Andful/scipoptsuite-deploy/commit/44cf839fd39f76d65e06bb51f5aae5322bb65e0f

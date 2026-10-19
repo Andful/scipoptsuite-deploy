@@ -8,5 +8,15 @@
         "runs_on": "windows-latest",
         "image": null,
         "shell": "msys2 {0}"
+    },
+    {
+        "enable": true,
+        "os": "linux",
+        "architecture": "x86_64",
+        "debug": false,
+        "exact": false,
+        "runs_on": "ubuntu-latest",
+        "image": "quay.io/pypa/manylinux_2_28_x86_64",
+        "shell": "bash"
     }
 ]
