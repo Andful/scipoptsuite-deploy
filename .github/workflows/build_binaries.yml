@@ -114,17 +114,18 @@ jobs:
                     echo "matrix=$(jq -c . ./builds.json)" >> $GITHUB_OUTPUT
     
     print-matrix:
+        needs: configure
         runs-on: ubuntu-latest
         steps:
             - name: Print matrix
               run: |
-                  echo "Matrix output: ${{needs.configure.outputs.test}}"
+                  echo "Test output: ${{needs.configure.outputs.test}}"
                   echo "Matrix output: ${{needs.configure.outputs.matrix}}"
 
     build:
+        needs: configure
         strategy:
             matrix: ${{ fromJson(needs.configure.outputs.matrix) }}
-
         runs-on: ${{ matrix.runs_on }}
         container:
             image: ${{ matrix.image }}
